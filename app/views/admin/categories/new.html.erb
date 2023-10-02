@@ -1,0 +1,115 @@
+<style>
+  .admin-categories-new {
+      font-family: Arial, sans-serif;
+      background-color: #f6f8fa;
+      padding: 20px 0;
+  }
+
+  .page-header h1 {
+      color: #1a1a2e;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 2px solid #e7e7e7;
+      margin-bottom: 20px;
+  }
+
+  .well {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .well .btn {
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 10px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .form-group label {
+      font-size: 18px;
+      color: #333;
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  .form-control {
+      height: 40px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary {
+      background-color: #007bff;
+      color: #ffffff;
+      padding: 10px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<section class="admin-categories-new">
+  <header class="page-header">
+      <h1>Admin &raquo; New Category</h1>
+  </header>
+
+  <div class="well">
+      <%= link_to 'All Categories', [:admin, :categories], class: 'btn btn-info' %>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-6">
+          <%= form_for [:admin, @category] do |form| %>
+              <% if form.object.errors.any? %>
+                  <div class="alert alert-danger">
+                      <strong>The following errors prevented saving:</strong>
+                      <ul>
+                          <% form.object.errors.full_messages.each do |error| %>
+                              <li><%= error %></li>
+                          <% end %>
+                      </ul>
+                  </div>
+              <% end %>
+
+              <div class="form-group">
+                  <%= form.label :name %>
+                  <%= form.text_field :name, class: 'form-control' %>
+              </div>
+              <div style="text-align: center;">
+                  <%= form.submit 'Create Category', class: 'btn btn-primary' %>
+              </div>
+          <% end %>
+      </div>
+  </div>
+</section>

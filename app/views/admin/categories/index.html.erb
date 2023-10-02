@@ -1,0 +1,81 @@
+<section class="admin-categories-index">
+
+  <style>
+    /* Basic Styling */
+    .admin-categories-index {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 2em;
+    }
+
+    /* Header Styling */
+    .admin-categories-index .page-header .header-title {
+        color: #1a1a2e;
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1em;
+        padding-bottom: 0.5em;
+        border-bottom: 2px solid #1a1a2e;
+    }
+
+    /* Button Styling */
+    .admin-categories-index .well.action-link {
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    .admin-categories-index .btn.btn-info.new-category-btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 24px;
+        font-size: 1.1em;
+        border-radius: 5px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .admin-categories-index .btn.btn-info.new-category-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Category List Styling */
+    .admin-categories-index .panel.panel-default.categories {
+        background-color: white;
+        width: 60%;
+        margin: 2em auto;
+        border: none;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 2em;
+    }
+
+    .admin-categories-index .category-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .admin-categories-index .category-item {
+        color: #555;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 0.8em 0;
+        font-size: 1.2em;
+    }
+  </style>
+
+  <header class="page-header">
+    <h1 class="header-title">Admin &raquo; All Categories</h1>
+  </header>
+
+  <div class="well action-link">
+    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info new-category-btn' %>
+  </div>
+
+  <div class="panel panel-default categories">
+    <ul class="category-list">
+      <% @categories.each do |category| %>
+        <li class="category-item"><%= category.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</section>
